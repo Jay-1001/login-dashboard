@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  /* -webkit-text-stroke: 1px black; */
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+}
