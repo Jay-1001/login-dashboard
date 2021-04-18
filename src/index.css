@@ -14,5 +14,10 @@ code {
 
 h1 {
   /* -webkit-text-stroke: 1px black; */
-  /* font-family: "Lucida Console", "Courier New", monospace; */
+  font-family: "Arial Black"
+}
+
+h2 {
+  /* -webkit-text-stroke: 1px black; */
+  font-family: "Arial Black"
 }

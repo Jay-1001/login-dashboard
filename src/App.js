@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import './App.css';
-import LoginPage from './Components/LoginPage';
-import DashboardPage from './Components/DashboardPage';
+import LoginPage from './Components/LoginComponent/LoginPage';
+import DashboardPage from './Components/DashboardComponent/DashboardPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -24,21 +25,36 @@ class App extends Component {
   };
 
   render() {
-    // return (
-    // <div>
-    //   <LoginPage />
-    //   {/* <DashboardPage /> */}
-    // </div>)
-    // <div>
-    switch(this.state.isLoggedIn) {
-      case false:
-        return <LoginPage loggedInHandler={this.loggedIn} />;
-      case true:
-        return <DashboardPage user={this.state.userName} logOutHandler={this.loggedOut}/>;
-      default:
-        return <LoginPage />;
-    }
-    {/* </div> */}
+
+    return(
+      <Router>
+        <Switch>
+          {/* { this.state.isLoggedIn &&  */}
+          <Route
+            path='/dashboard'
+            render={(props) => (
+              <DashboardPage {...props} isAuthorized={this.state.isLoggedIn} user={this.state.userName} logOutHandler={this.loggedOut} />
+            )}
+          />
+          {/* } */}
+          <Route
+            path='/'
+            render={(props) => (
+              <LoginPage {...props} loggedInHandler={this.loggedIn} />
+            )}
+          />
+        </Switch>
+      </Router>
+    )
+
+    // switch(this.state.isLoggedIn) {
+    //   case false:
+    //     return <LoginPage loggedInHandler={this.loggedIn} />;
+    //   case true:
+    //     return <DashboardPage user={this.state.userName} logOutHandler={this.loggedOut}/>;
+    //   default:
+    //     return <LoginPage />;
+    // }
   }
 }
 

@@ -13,18 +13,7 @@ function InputField(props) {
 
     return (
         <div>
-            {/* <InputGroup size={sizeText}>
-                {(inputType === 'password') ?
-                    <>
-                        <input type={type} className={className} onChange={e => props.changeHandler(e)} />
-                        <InputGroup.Append>
-                            <Button variant="outline-secondary" onClick={() => {(type === 'password') ? setType('text') : setType('password')}}>Show</Button>
-                        </InputGroup.Append>
-                    </>
-                    :
-                    <input type={inputType} className={className} onChange={e => props.changeHandler(e)} />
-                }
-            </InputGroup> */}
+            <label>{props.labelText ? props.labelText : ''}</label>
             <InputGroup size={sizeText}>
                 <input type={type} className={className} onChange={e => props.changeHandler(e)} />
                 {(inputType === 'password') &&
@@ -34,7 +23,8 @@ function InputField(props) {
                         </Button>
                     </InputGroup.Append>
                 }
-            </InputGroup>
+            </InputGroup><br/>
+            <label style={{color:'red'}}>{props.errorText ? props.errorText : ''}</label>
         </div>
     )
 }
